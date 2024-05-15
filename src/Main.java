@@ -6,23 +6,21 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        if(args.length > 0) {
-            // get the input from argument if present
-            int num = Integer.parseInt(args[0]);
-            String result = (num % 2 == 0) ? "Even" : "Odd";
-
-            output = "The number " + num + " is " + result;
-            System.out.println(output);
-        } else {
-            System.out.print("Enter a number: ");
-            int num = scanner.nextInt();
+        int num;
+        try {
+            if (args.length > 0) {
+                num = Integer.parseInt(args[0]);
+            } else {
+                System.out.print("Enter a number: ");
+                num = scanner.nextInt();
+            }
 
             String result = (num % 2 == 0) ? "Even" : "Odd";
-
             output = "The number " + num + " is " + result;
-            System.out.println(output);
+        } catch (NumberFormatException e) {
+            output = "Invalid input. Please enter a number.";
         }
-        // Remember to close the scanner
+        System.out.println(output);
         scanner.close();
 
     }
