@@ -5,31 +5,23 @@ public class Main {
 
     private static String output;
 
-    public static void main(String[] args) throws InputMismatchException {  // Added "throws InputMismatchException"
-        Scanner scanner = new Scanner(System.in);
-        int num;
-
-        if (args.length > 0) {
-            num = Integer.parseInt(args[0]);
+    public static void main(String[] args) {
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int number = scanner.nextInt();
+        if (isEven(number)) {
+            System.out.println("The number " + number + " is Even");
         } else {
-            System.out.print("Enter a number: ");
-            try{
-                num = scanner.nextInt();
-            }
-            catch(InputMismatchException e){
-                //If the input is not a valid number throw an InputMismatchException
-                throw new InputMismatchException("Invalid input. Please enter a number.");
-            }
+            System.out.println("The number " + number + " is Odd");
         }
-
-        String result = (num % 2 == 0) ? "Even" : "Odd";
-
-        output = "The number " + num + " is " + result;
-        System.out.println(output);
         scanner.close();
     }
 
-    public static String getOutput() {
-        return output;
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
+
+    public static boolean isOdd(int number) {
+        return number % 2 != 0;
     }
 }
